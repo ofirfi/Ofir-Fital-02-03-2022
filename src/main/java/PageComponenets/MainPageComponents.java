@@ -3,6 +3,7 @@ import PageObjects.MainPageObjects;
 import Shared.BaseComponents;
 
 
+
 public class MainPageComponents extends BaseComponents {
 
     private MainPageObjects mainPageObjects = new MainPageObjects();
@@ -12,9 +13,7 @@ public class MainPageComponents extends BaseComponents {
         selenium.elementSendText(mainPageObjects.helpFormNameTextBox,name);
         selenium.elementSendText(mainPageObjects.helpFormEmailTextBox,email);
         selenium.elementSendText(mainPageObjects.helpFormPhoneTextBox,phone);
-        selenium.clickOnElement(mainPageObjects.helpFormSendBtn);
     }
-
 
 
 }
