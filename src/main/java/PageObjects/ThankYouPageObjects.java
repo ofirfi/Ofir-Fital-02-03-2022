@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 
 public class ThankYouPageObjects extends BaseObjects {
 
+    @FindBy(xpath ="//p[@class='thankYou__subtitile-avz2fr-6 cbgZUc']/span")
+    public WebElement thankYouMsg;
+
     @FindBy(className = "thankYou__button-avz2fr-9.fIeAdZ")
     public WebElement heroloWebsiteBtn;
 

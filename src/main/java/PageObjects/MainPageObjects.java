@@ -19,7 +19,7 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath =  "//input[@name='phone' and @class='Footer__Input-sc-159s1ql-6 vqSrW']")
     public WebElement helpFormPhoneTextBox;
 
-    @FindBy(className = "Footer__Button-sc-159s1ql-7.kOOAFW")
+    @FindBy(xpath = "//button[@class='Footer__Button-sc-159s1ql-7 kOOAFW']")
     public WebElement helpFormSendBtn;
 
     @FindBy(className = "Footer__InputError-sc-159s1ql-5.blyfOW")
@@ -29,19 +29,19 @@ public class MainPageObjects extends BaseObjects {
 
     //Hear More Elements
     @FindBy(id = "name")
-    public WebElement HearMoreNameTextBox;
+    public WebElement hearMoreNameTextBox;
 
     @FindBy(id = "company")
-    public WebElement HearMoreCompanyTextBox;;
+    public WebElement hearMoreCompanyTextBox;;
 
     @FindBy(id = "email")
-    public WebElement HearMoreEmailTextBox;;
+    public WebElement hearMoreEmailTextBox;;
 
-    @FindBy(id = "phone")
-    public WebElement HearMorePhoneTextBox;;
+    @FindBy(id = "telephone")
+    public WebElement hearMorePhoneTextBox;;
 
     @FindBy(linkText = "דברו איתנו")
-    public WebElement HearMoreSendBtn;
+    public WebElement hearMoreSendBtn;
 
     @FindBy(className = "commun__ErrorText-zi6nvq-6.bDkbFh")
     public List<WebElement> hearMoreErrorMsgs;

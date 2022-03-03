@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import net.jodah.failsafe.internal.util.Assert;
 
 import java.time.Duration;
 import java.util.List;
@@ -50,8 +51,7 @@ public class Selenium {
     }
 
     public void verifyElementText(WebElement element,String text){
-        if(!getElementText(element).equals(text))
-            System.out.println("Exepction or warning");
+        Assert.isTrue(getElementText(element).equals(text),"Error! - Element does not contains the text:" + text);
     }
 
     public void verifyElementsTexts(List<WebElement> elements, List<String> texts){
@@ -67,15 +67,6 @@ public class Selenium {
         element.sendKeys(text);
     }
 
-    public WebElement findElement(String property,int type){
-        if(type == 1)
-            return driver.findElement(By.id(property));
-        if (type == 2)
-            return driver.findElement(By.className(property));
-        if(type == 3)
-            driver.findElement(By.linkText(property));
-        return driver.findElement(By.xpath(property));
-    }
 
 
 }
