@@ -1,5 +1,6 @@
 package Selenium;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,6 +28,10 @@ public class Selenium {
         return selenium;
     }
 
+    public WebDriver getDriver(){
+        return driver;
+    }
+
     public void goToURL(String url){
         driver.get(url);
     }
@@ -34,6 +39,11 @@ public class Selenium {
     public String getURL(){
         return driver.getCurrentUrl();
     }
+
+    public void close(){
+        driver.close();
+    }
+
 
     public void clickOnElement(WebElement element){
         element.click();
@@ -53,8 +63,19 @@ public class Selenium {
         return element.getText();
     }
 
-    public void close(){
-        driver.close();
+    public void elementSendText(WebElement element,String text){
+        element.sendKeys(text);
     }
+
+    public WebElement findElement(String property,int type){
+        if(type == 1)
+            return driver.findElement(By.id(property));
+        if (type == 2)
+            return driver.findElement(By.className(property));
+        if(type == 3)
+            driver.findElement(By.linkText(property));
+        return driver.findElement(By.xpath(property));
+    }
+
 
 }
