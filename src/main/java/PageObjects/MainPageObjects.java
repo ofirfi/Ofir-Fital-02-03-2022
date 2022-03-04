@@ -1,10 +1,10 @@
 package PageObjects;
 
-import Shared.BaseObjects;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
+import Shared.BaseObjects;
 
 public class MainPageObjects extends BaseObjects {
 
@@ -22,29 +22,26 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath = "//button[@class='Footer__Button-sc-159s1ql-7 kOOAFW']")
     public WebElement helpFormSendBtn;
 
-    @FindBy(className = "Footer__InputError-sc-159s1ql-5.blyfOW")
-    public WebElement helpFormNameErrorMsg;
-
+    public By helpFormNameErrorMsg = By.xpath("//label[@class='Footer__InputError-sc-159s1ql-5 blyfOW']/span");
 
 
     //Hear More Elements
     @FindBy(id = "name")
-    public WebElement hearMoreNameTextBox;
+    public WebElement contactUsNameTextBox;
 
     @FindBy(id = "company")
-    public WebElement hearMoreCompanyTextBox;;
+    public WebElement contactUsCompanyTextBox;;
 
     @FindBy(id = "email")
-    public WebElement hearMoreEmailTextBox;;
+    public WebElement contactUsEmailTextBox;;
 
     @FindBy(id = "telephone")
-    public WebElement hearMorePhoneTextBox;;
+    public WebElement contactUsPhoneTextBox;;
 
     @FindBy(linkText = "דברו איתנו")
-    public WebElement hearMoreSendBtn;
+    public WebElement contactUsSendBtn;
 
-    @FindBy(className = "commun__ErrorText-zi6nvq-6.bDkbFh")
-    public List<WebElement> hearMoreErrorMsgs;
+    public By contactUsErrorMsgs = By.xpath("//span[@class='commun__ErrorText-zi6nvq-6 bDkbFh']/span");
 
 
     //Popup Elements
@@ -63,11 +60,10 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath = "//button[@class='onUnloadPopup__Button-v34ylr-19 cUxvnt']")
     public WebElement popupSendBtn;
 
-    @FindBy(xpath = "//*[@class='onUnloadPopup__InputError-v34ylr-15 dsvIDy'")
-    List<WebElement> popupErrorMsgs;
+    public By popupErrorMsgs = By.xpath("//label[@class='onUnloadPopup__InputError-v34ylr-15 dsvIDy']/span");
 
-    //Others
 
+    //Other buttons and links
     @FindBy(className = "backToTop__BtnGoUp-z83xj1-0.huPgzm")
     public WebElement scrollUpBtn;
 

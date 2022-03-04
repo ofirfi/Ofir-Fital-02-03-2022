@@ -13,7 +13,7 @@ public class BaseTests {
         selenium.goToURL("https://automation.herolo.co.il/");
     }
 
-//    @After
+    @After
     public void afterTests(){
         selenium.close();
     }
