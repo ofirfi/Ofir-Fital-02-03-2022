@@ -62,4 +62,11 @@ public class MainPageTests extends BaseTests{
         mainPageComponents.invalidFieldsErrorCheck(MainPageComponents.FormType.CONTACT_US_FORM);
     }
 
+    /**
+     * The function tests the page buttons.
+     */
+    @Test
+    public void buttonsCheckTest(){
+        mainPageComponents.checkPageButtons();
+    }
 }

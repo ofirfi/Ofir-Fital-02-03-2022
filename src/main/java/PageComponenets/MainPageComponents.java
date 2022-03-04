@@ -1,5 +1,6 @@
 package PageComponenets;
 
+import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,11 @@ public class MainPageComponents extends BaseComponents {
     private String requiredFieldMsg = "שדה * הוא שדה חובה";
     private String illegalEmailMsg = "כתובת אימייל לא חוקית";
     private String illegalPhoneMsg = "מספר טלפון לא חוקי";
+    private List<String> outsidePageLinks = Arrays.asList("https://api.whatsapp.com/send?phone=972544945333",
+            "https://www.linkedin.com/company/herolo/",
+            "https://api.whatsapp.com/send?phone=972544945333",
+            "https://www.facebook.com/Herolofrontend",
+            "https://herolo.co.il/?lang=he");
 
      public enum FormType {
          HELP_FORM,
@@ -123,4 +129,19 @@ public class MainPageComponents extends BaseComponents {
         return newErrors;
     }
 
+    /**
+     * The function verifies the integrity of the link buttons.
+     */
+    public void checkPageButtons(){
+        List<WebElement> linkElements = mainPageObjects.outsidePageLinks;
+        selenium.scrollToElement(linkElements.get(0));
+        for(int i=0; i< linkElements.size();i++) {
+            selenium.verifyElementLink(linkElements.get(i),outsidePageLinks.get(i));
+            selenium.verifyUnbrokenLink(linkElements.get(i));
+        }
+
+        //Verify "Back To Top" button.
+        selenium.clickOnElement(mainPageObjects.scrollUpBtn);
+        Assert.isTrue(selenium.getPageYOffset() == 0,"Fail! - Scroll to top button is not working");
+    }
 }

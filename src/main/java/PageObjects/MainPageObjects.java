@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import Shared.BaseObjects;
 
+import java.util.List;
+
 public class MainPageObjects extends BaseObjects {
 
 
@@ -73,14 +75,9 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath = "//img[@alt='Left arrow']")
     public WebElement workExampleLeftArrow;
 
-    @FindBy(xpath = "//a[contains(@href,'herolo.co.il')]")
-    public WebElement heroloSiteLink;
+    @FindBy(xpath = "//a[@target='_blank']")
+    public List<WebElement> outsidePageLinks;
 
-    @FindBy(className = "callUsWhatsapp__BtnWhatsapp-rkzbui-0.cjunrQ")
-    public WebElement floatingWhatsAppLink;
-
-    @FindBy(className = "socialMediaBar__ImgSocial-sc-1ry1db0-2.jOgeKm")
-    public WebElement staticWhatsAppLink;
 
 
 }

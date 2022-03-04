@@ -2,12 +2,17 @@ package Selenium;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.interactions.Actions;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 
@@ -31,23 +36,29 @@ public class Selenium {
             selenium = new Selenium();
         }
         return selenium;
+
     }
+
 
     public WebDriver getDriver(){
         return driver;
     }
 
+
     public void goToURL(String url){
         driver.get(url);
     }
+
 
     public void close(){
         driver.close();
     }
 
+
     public void clickOnElement(WebElement element){
         element.click();
     }
+
 
     /**
      * The function verifies element text value.
@@ -57,6 +68,7 @@ public class Selenium {
     public void verifyElementText(WebElement element,String text){
         Assert.isTrue(getElementText(element).equals(text),"Error! - Element does not contains the text:" + text);
     }
+
 
     /**
      * The function verifies number of elements and texts.
@@ -68,13 +80,16 @@ public class Selenium {
             verifyElementText(elements.get(i),texts.get(i));
     }
 
+
     public String getElementText(WebElement element){
         return element.getText();
     }
 
+
     public void elementSendText(WebElement element,String text){
         element.sendKeys(text);
     }
+
 
     /**
      * The function scrolls to a given element.
@@ -84,7 +99,55 @@ public class Selenium {
         actions.moveToElement(element).perform();
     }
 
+
     public List<WebElement> findElementsByXpath(By by){
             return driver.findElements(by);
     }
+
+
+    /**
+     * The function gets the page Y axis offset.
+     * @return The Y axis offset of the current page state.
+     */
+    public long getPageYOffset(){
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        return (Long) executor.executeScript("return window.pageYOffset;");
+    }
+
+    /**
+     * The function verifies the element's link URL.
+     * @param element The element to verify the URL.
+     * @param link The expected URL.
+     */
+    public void verifyElementLink(WebElement element,String link){
+        Assert.isTrue(element.getAttribute("href").equals(link),"Error! - Wrong link");
+    }
+
+
+    public String getLinkUrl(WebElement element){
+        return element.getAttribute("href");
+    }
+
+    /**
+     * The function verifies integrity of the element's URL.
+     * @param element The element to verify the link.
+     */
+    public void verifyUnbrokenLink(WebElement element){
+        HttpURLConnection connection = null;
+        String url = getLinkUrl(element);
+        int responseCode;
+        try {
+            connection.setRequestMethod("HEAD");
+            connection.connect();
+            responseCode = connection.getResponseCode();
+            new URL(url).openConnection();
+
+            if(responseCode >= 400)
+                System.out.println(url + "is not valid");
+        }
+        catch (Exception e){
+            System.out.println(e.getStackTrace());
+        }
+    }
+
 }
