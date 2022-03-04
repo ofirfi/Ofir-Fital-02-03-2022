@@ -12,6 +12,7 @@ import Shared.BaseComponents;
 public class MainPageComponents extends BaseComponents {
 
     private MainPageObjects mainPageObjects = new MainPageObjects();
+    private String url = "https://automation.herolo.co.il/";
     private String requiredFieldMsg = "שדה * הוא שדה חובה";
     private String illegalEmailMsg = "כתובת אימייל לא חוקית";
     private String illegalPhoneMsg = "מספר טלפון לא חוקי";
@@ -22,6 +23,9 @@ public class MainPageComponents extends BaseComponents {
          POPUP_FORM
     }
 
+    public void goToPage(){
+        selenium.goToURL(url);
+    }
 
     /**
      * The function fills "How To Help" form.

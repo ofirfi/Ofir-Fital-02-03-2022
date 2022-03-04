@@ -16,6 +16,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void helpFormE2ETest(){
+        mainPageComponents.goToPage();
         mainPageComponents.fillHelpForm("Automation","Automation@Test.com","0501234567");
         mainPageComponents.sendHelpForm();
         thankYouPageComponents.verifyPage();
@@ -27,6 +28,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void helpFormValidationTest(){
+        mainPageComponents.goToPage();
         mainPageComponents.sendHelpForm();
         mainPageComponents.MissingRequiredFieldsErrorsCheck(MainPageComponents.FormType.HELP_FORM);
         mainPageComponents.fillHelpForm("Automation","Automation@Test","Ab12#");
@@ -39,6 +41,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void contactUsFormE2ETest(){
+        mainPageComponents.goToPage();
         mainPageComponents.scrollDownToContactForm();
         mainPageComponents.fillContactUsForm("Automation","Test","Automation@Test.com","0501234567");
         mainPageComponents.sendContactUsForm();
@@ -51,6 +54,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void contactUsValidationTest(){
+        mainPageComponents.goToPage();
         mainPageComponents.scrollDownToContactForm();
         mainPageComponents.sendContactUsForm();
         mainPageComponents.MissingRequiredFieldsErrorsCheck(MainPageComponents.FormType.CONTACT_US_FORM);
