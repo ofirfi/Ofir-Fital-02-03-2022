@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import Shared.BaseObjects;
+import Base.BaseObjects;
 
-import java.util.List;
 
 public class MainPageObjects extends BaseObjects {
 
+    @FindBy(xpath = "//h2[@class='typography__Title-sc-2ylieu-1 typography__MobileTitle-sc-2ylieu-3 bZqNWv']/span")
+    public WebElement weAreHerolo;
 
     //Contact Us Elements
     @FindBy(xpath = "//input[@name='name' and @class='Footer__Input-sc-159s1ql-6 vqSrW']")
@@ -75,8 +76,6 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath = "//img[@alt='Left arrow']")
     public WebElement workExampleLeftArrow;
 
-    @FindBy(xpath = "//a[@target='_blank']")
-    public List<WebElement> outsidePageLinks;
 
 
 

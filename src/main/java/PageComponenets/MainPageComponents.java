@@ -7,21 +7,33 @@ import java.util.Arrays;
 import java.util.List;
 
 import PageObjects.MainPageObjects;
-import Shared.BaseComponents;
+import Base.BaseComponents;
 
 
 public class MainPageComponents extends BaseComponents {
 
     private MainPageObjects mainPageObjects = new MainPageObjects();
-    private String url = "https://automation.herolo.co.il/";
+    public String pageUrl = "https://automation.herolo.co.il/";
     private String requiredFieldMsg = "שדה * הוא שדה חובה";
     private String illegalEmailMsg = "כתובת אימייל לא חוקית";
     private String illegalPhoneMsg = "מספר טלפון לא חוקי";
+    private String weAreHeroloText = "";
     private List<String> outsidePageLinks = Arrays.asList("https://api.whatsapp.com/send?phone=972544945333",
             "https://www.linkedin.com/company/herolo/",
             "https://api.whatsapp.com/send?phone=972544945333",
             "https://www.facebook.com/Herolofrontend",
             "https://herolo.co.il/?lang=he");
+
+    private static MainPageComponents mainPageComponents;
+
+    private MainPageComponents(){}
+    public static MainPageComponents getMainPageComponents(){
+        if(mainPageComponents == null){
+            mainPageComponents = new MainPageComponents();
+        }
+        return mainPageComponents;
+    }
+
 
      public enum FormType {
          HELP_FORM,
@@ -29,9 +41,6 @@ public class MainPageComponents extends BaseComponents {
          POPUP_FORM
     }
 
-    public void goToPage(){
-        selenium.goToURL(url);
-    }
 
     /**
      * The function fills "How To Help" form.
@@ -101,7 +110,7 @@ public class MainPageComponents extends BaseComponents {
     }
 
     /**
-     *  The function verifies error messages of invalid values in text fields.
+     * The function verifies error messages of invalid values in text fields.
      * @param form The type of form.
      */
     public void invalidFieldsErrorCheck(FormType form){
@@ -135,13 +144,15 @@ public class MainPageComponents extends BaseComponents {
     public void checkPageButtons(){
         List<WebElement> linkElements = mainPageObjects.outsidePageLinks;
         selenium.scrollToElement(linkElements.get(1));
-        for(int i=0; i< linkElements.size();i++) {
-            selenium.verifyElementLink(linkElements.get(i),outsidePageLinks.get(i));
-            selenium.verifyUnbrokenLink(linkElements.get(i));
-        }
+
+        checkUnbrokenLinks(linkElements,outsidePageLinks);
 
         //Verify "Back To Top" button.
         selenium.clickOnElement(mainPageObjects.scrollUpBtn);
         Assert.isTrue(selenium.getPageYOffset() == 0,"Fail! - Scroll to top button is not working");
+    }
+
+    public void verifyPage(){
+        selenium.verifyElementText(mainPageObjects.weAreHerolo,weAreHeroloText);
     }
 }

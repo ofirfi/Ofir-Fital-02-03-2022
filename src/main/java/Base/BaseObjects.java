@@ -1,9 +1,11 @@
-package Shared;
+package Base;
 
 import Selenium.Selenium;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class BaseObjects {
     Selenium selenium = Selenium.getSelenium();
@@ -12,10 +14,7 @@ public class BaseObjects {
         PageFactory.initElements(selenium.getDriver(),this);
     }
 
-    @FindBy(xpath = "//a[contains(@href,'facebook.com')]")
-    protected WebElement facebookLink;
-
-    @FindBy(xpath = "//a[contains(@href,'linkedin.com')]")
-    protected WebElement linkedinLink;
+    @FindBy(xpath = "//a[@target='_blank']")
+    public List<WebElement> outsidePageLinks;
 
 }

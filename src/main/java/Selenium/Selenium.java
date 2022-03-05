@@ -9,9 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.interactions.Actions;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.List;
@@ -36,7 +34,6 @@ public class Selenium {
             selenium = new Selenium();
         }
         return selenium;
-
     }
 
 
@@ -44,11 +41,9 @@ public class Selenium {
         return driver;
     }
 
-
     public void goToURL(String url){
         driver.get(url);
     }
-
 
     public void close(){
         driver.close();
@@ -56,7 +51,12 @@ public class Selenium {
 
 
     public void clickOnElement(WebElement element){
-        element.click();
+        try {
+            element.click();
+        }
+        catch(Exception e){
+            Assert.isTrue(false,"Failed to click on element");
+        }
     }
 
 
@@ -79,7 +79,6 @@ public class Selenium {
         for (int i=0;i<elements.size();i++)
             verifyElementText(elements.get(i),texts.get(i));
     }
-
 
     public String getElementText(WebElement element){
         return element.getText();
@@ -111,7 +110,7 @@ public class Selenium {
      */
     public Long getPageYOffset(){
         try{
-            Thread.sleep(500);
+            Thread.sleep(1000);
         }
         catch(Exception e){}
         JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -124,7 +123,7 @@ public class Selenium {
      * @param link The expected URL.
      */
     public void verifyElementLink(WebElement element,String link){
-        Assert.isTrue(element.getAttribute("href").equals(link),"Error! - Wrong link");
+        Assert.isTrue(element.getAttribute("href").equals(link),String.format("Error! - Got %s. Expected to get: %s",element.getAttribute("href"),link));
     }
 
 
@@ -154,4 +153,7 @@ public class Selenium {
         }
     }
 
+    public void verifyPageURL(String expectedURL){
+        Assert.isTrue(driver.getCurrentUrl().equals(expectedURL),String.format("Error! - got to %S. Expected URL: %s",driver.getCurrentUrl(),expectedURL));
+    }
 }
