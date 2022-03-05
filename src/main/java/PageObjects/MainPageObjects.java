@@ -54,10 +54,10 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath = "//input[@name ='name' and @class='onUnloadPopup__Input-v34ylr-18 kCHUMm']")
     public WebElement popupNameTextBox;
 
-    @FindBy(xpath = "//input[@name ='name' and @class='onUnloadPopup__Input-v34ylr-18 kCHUMm']")
+    @FindBy(xpath = "//input[@name ='email' and @class='onUnloadPopup__Input-v34ylr-18 kCHUMm']")
     public WebElement popupEmailTextBox;
 
-    @FindBy(xpath = "//input[@name ='name' and @class='onUnloadPopup__Input-v34ylr-18 kCHUMm']")
+    @FindBy(xpath = "//input[@name ='phone' and @class='onUnloadPopup__Input-v34ylr-18 kCHUMm']")
     public WebElement popupPhoneTextBox;
 
     @FindBy(xpath = "//button[@class='onUnloadPopup__Button-v34ylr-19 cUxvnt']")

@@ -13,7 +13,7 @@ import Base.BaseComponents;
 public class MainPageComponents extends BaseComponents {
 
     private MainPageObjects mainPageObjects = new MainPageObjects();
-    public String pageUrl = "https://automation.herolo.co.il/";
+    private String pageUrl = "https://automation.herolo.co.il/";
     private String requiredFieldMsg = "שדה * הוא שדה חובה";
     private String illegalEmailMsg = "כתובת אימייל לא חוקית";
     private String illegalPhoneMsg = "מספר טלפון לא חוקי";
@@ -41,6 +41,9 @@ public class MainPageComponents extends BaseComponents {
          POPUP_FORM
     }
 
+    public String getPageURL(){
+        return pageUrl;
+    }
 
     /**
      * The function fills "How To Help" form.
@@ -53,6 +56,7 @@ public class MainPageComponents extends BaseComponents {
         selenium.elementSendText(mainPageObjects.helpFormEmailTextBox,email);
         selenium.elementSendText(mainPageObjects.helpFormPhoneTextBox,phone);
     }
+
 
     /**
      * The function sends "How To Help" form.
@@ -154,5 +158,33 @@ public class MainPageComponents extends BaseComponents {
 
     public void verifyPage(){
         selenium.verifyElementText(mainPageObjects.weAreHerolo,weAreHeroloText);
+    }
+
+
+
+
+    /**
+     * The function gets the popup to load
+     */
+    public void getPopup(){
+        selenium.scrollToElement(mainPageObjects.contactUsSendBtn);
+        try{
+            Thread.sleep(35000);
+        }
+        catch(Exception e){}
+    }
+
+    public void fillPopupForm(String name, String email, String phone){
+        selenium.elementSendText(mainPageObjects.popupNameTextBox,name);
+        selenium.elementSendText(mainPageObjects.popupEmailTextBox,email);
+        selenium.elementSendText(mainPageObjects.popupPhoneTextBox,phone);
+    }
+
+    public void sendPopup(){
+        selenium.clickOnElement(mainPageObjects.popupSendBtn);
+    }
+
+    public void verifyPopupClosure(){
+
     }
 }

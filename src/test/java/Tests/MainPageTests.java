@@ -20,7 +20,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void a_HelpFormE2ETest(){
-        mainPageComponents.goToPage(mainPageComponents.pageUrl);
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
         mainPageComponents.fillHelpForm("Automation","Automation@Test.com","0501234567");
         mainPageComponents.sendHelpForm();
         thankYouPageComponents.verifyPage();
@@ -31,7 +31,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void b_HelpFormValidationTest(){
-        mainPageComponents.goToPage(mainPageComponents.pageUrl);
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
         mainPageComponents.sendHelpForm();
         mainPageComponents.MissingRequiredFieldsErrorsCheck(MainPageComponents.FormType.HELP_FORM);
         mainPageComponents.fillHelpForm("Automation","Automation@Test","Ab12#");
@@ -43,7 +43,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void c_ContactUsFormE2ETest(){
-        mainPageComponents.goToPage(mainPageComponents.pageUrl);
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
         mainPageComponents.scrollDownToContactForm();
         mainPageComponents.fillContactUsForm("Automation","Test","Automation@Test.com","0501234567");
         mainPageComponents.sendContactUsForm();
@@ -55,7 +55,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void d_ContactUsValidationTest(){
-        mainPageComponents.goToPage(mainPageComponents.pageUrl);
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
         mainPageComponents.scrollDownToContactForm();
         mainPageComponents.sendContactUsForm();
         mainPageComponents.MissingRequiredFieldsErrorsCheck(MainPageComponents.FormType.CONTACT_US_FORM);
@@ -68,7 +68,19 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void e_MainPageButtonsCheckTest(){
-        mainPageComponents.goToPage(mainPageComponents.pageUrl);
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
         mainPageComponents.checkPageButtons();
+    }
+
+    /**
+     * The function tests the popup E2E process.
+     */
+    @Test
+    public void f_PopupE2ETest(){
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
+        mainPageComponents.getPopup();
+        mainPageComponents.fillPopupForm("Automation","Automation@Test.com","0501234567");
+        mainPageComponents.sendPopup();
+        thankYouPageComponents.verifyPage();
     }
 }

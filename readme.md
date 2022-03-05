@@ -1,16 +1,16 @@
 Tests Scenarios:
 
     1. Main page - "How to help" form E2E test:
-        a. Go to the main page.
+        a.  Open the main page.
         b.  Fill a name (Eg: Automation).
-        c.  Fill a valid email (Eg: Automation@Test.com) .
+        c.  Fill a valid email (Eg: Automation@Test.com).
         d.  Fill a valid phone number (Eg: 050-1234567).
         e.  Click on "שליחה" button.
         f.  Verify that the form was sent.
 
 
     2. Main page - "How to help" form validation test:
-        a.  Go to the main page.
+        a.  Open the main page.
         b.  Click on "שליחה" button.
         c.  Verify that "שדה שם הוא שדה חובה" error message is presented.
         d.  Verify that "שדה אימייל הוא שדה חובה" error message is presented.
@@ -23,7 +23,7 @@ Tests Scenarios:
         
 
     3. Main page - "Contact us" for E2E test:
-        a.  Go to the main page.
+        a.  Open the main page.
         b.  Scroll down the page to "Contact us" form. 
         c.  Fill the name field with a name (Eg: Testing).
         d.  Fill the company field with a valid company name (Eg: Company).
@@ -34,7 +34,7 @@ Tests Scenarios:
 
 
     4. Main page - "Contact us" form validation test:
-        a.  Go to the main page.
+        a.  Open the main page.
         b.  Scroll down the page to "Contact us" form.
         c.  Click on "דבר איתנו" button.
         d.  Verify that "שדה שם הוא שדה חובה" error message is presented.
@@ -50,7 +50,7 @@ Tests Scenarios:
     
 
     5. Main page - Check page buttons integrity:
-        a.  Go to the main page.
+        a.  Open the main page.
         b.  Click on the floating Whatsapp button on the left side of the page.
         c.  Verify that the URL is "https://api.whatsapp.com/send?phone=972544945333".
         d.  Verify that the response status code is lower than 400.
@@ -72,7 +72,7 @@ Tests Scenarios:
 
 
     6.  Thank You page - Check page buttons integrity:
-        a.  Go to 'Thank You' page.
+        a.  Open 'Thank You' page.
         b.  Click on 'עבור לאתר' button.
         c.  Verify that the URL is "https://herolo.co.il/".
         d.  Verify that the response status code is lower than 400.
@@ -87,3 +87,30 @@ Tests Scenarios:
         m.  Verify that the response status code is lower than 400.
         n.  Click on 'חזור' button.
         o.  Verify transferion to the main page.
+
+        
+    7. Main page - Popup E2E test:
+        a.  Open the main page.
+        b.  Scroll down to the bottom of the page.
+        c   Wait 35 seconds for the popup to appear.
+        d   Fill a name (Eg: Automation).
+        e   Fill a valid email (Eg: Automation@Test.com).
+        f   Fill a valid phone number (Eg: 050-1234567).
+        g   Click on 'לחצו לקבלת שיחה' button.
+        h   Verify that the form was sent.
+
+    
+    8. Main page - Popup validation test:
+        a.  Open the main page.
+        b.  Scroll down to the bottom of the page.
+        c.  Wait 35 seconds for the popup to appear.
+        d.  Verify that "שדה שם הוא שדה חובה" error message is presented.
+        e.  Verify that "שדה אימייל הוא שדה חובה" error message is presented.
+        f.  Verify that "שדה טלפון הוא שדה חובה" error message is presented.
+        g.  Fill a valid name (Eg: Automation).
+        h.  Fill the email field with an invalid email (Eg: Automation@Test).
+        i   Fill the phone number field with letters (Eg: Ab12#).
+        j   Verify that "כתובת אימייל לא חוקית" error message is presented.
+        k   Verify that "מספר טלפון לא חוקי" error message is presented.
+        l   Click on the 'X' button to close the popup.
+        m.  Verify popup was closed.

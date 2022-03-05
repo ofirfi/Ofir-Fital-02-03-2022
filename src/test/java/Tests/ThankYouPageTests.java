@@ -15,7 +15,7 @@ public class ThankYouPageTests extends BaseTests {
      */
     @Test
     public void thankYouPageButtonsCheckTest(){
-        thankYouPageComponents.goToPage(thankYouPageComponents.pageUrl);
+        thankYouPageComponents.goToPage(thankYouPageComponents.getPageUrl());
         thankYouPageComponents.checkPageLinksAndButtons();
         mainPageComponents.verifyPage();
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ThankYouPageComponents extends BaseComponents {
     private ThankYouPageObjects thankYouPageObjects = new ThankYouPageObjects();
-    public String pageUrl = "https://automation.herolo.co.il/thank-you/";
+    private String pageUrl = "https://automation.herolo.co.il/thank-you/";
     private String thankYouMsg = "הנתונים התקבלו בהצלחה, ניצור קשר ממש בקרוב…";
     private List<String> urlLinks = Arrays.asList("https://herolo.co.il/",
             "https://www.facebook.com/Herolofrontend",
@@ -28,6 +28,9 @@ public class ThankYouPageComponents extends BaseComponents {
     }
 
 
+    public String getPageUrl(){
+        return pageUrl;
+    }
 
     public void verifyPage(){
         selenium.verifyElementText(thankYouPageObjects.thankYouMsg,thankYouMsg);
