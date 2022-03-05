@@ -67,6 +67,7 @@ public class MainPageTests extends BaseTests{
      */
     @Test
     public void buttonsCheckTest(){
+        mainPageComponents.goToPage();
         mainPageComponents.checkPageButtons();
     }
 }

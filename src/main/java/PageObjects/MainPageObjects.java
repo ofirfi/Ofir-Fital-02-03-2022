@@ -66,7 +66,7 @@ public class MainPageObjects extends BaseObjects {
 
 
     //Other buttons and links
-    @FindBy(className = "backToTop__BtnGoUp-z83xj1-0.huPgzm")
+    @FindBy(xpath = "//*[@class='backToTop__BtnGoUp-z83xj1-0 huPgzm']")
     public WebElement scrollUpBtn;
 
     @FindBy(xpath = "//img[@alt='Right arrow']")

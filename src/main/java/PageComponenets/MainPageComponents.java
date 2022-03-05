@@ -134,7 +134,7 @@ public class MainPageComponents extends BaseComponents {
      */
     public void checkPageButtons(){
         List<WebElement> linkElements = mainPageObjects.outsidePageLinks;
-        selenium.scrollToElement(linkElements.get(0));
+        selenium.scrollToElement(linkElements.get(1));
         for(int i=0; i< linkElements.size();i++) {
             selenium.verifyElementLink(linkElements.get(i),outsidePageLinks.get(i));
             selenium.verifyUnbrokenLink(linkElements.get(i));

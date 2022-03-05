@@ -109,9 +109,13 @@ public class Selenium {
      * The function gets the page Y axis offset.
      * @return The Y axis offset of the current page state.
      */
-    public long getPageYOffset(){
+    public Long getPageYOffset(){
+        try{
+            Thread.sleep(500);
+        }
+        catch(Exception e){}
         JavascriptExecutor executor = (JavascriptExecutor) driver;
-        return (Long) executor.executeScript("return window.pageYOffset;");
+        return ((Number)executor.executeScript("return window.pageYOffset;")).longValue();
     }
 
     /**
@@ -137,16 +141,16 @@ public class Selenium {
         String url = getLinkUrl(element);
         int responseCode;
         try {
+            connection = (HttpURLConnection)new URL(url).openConnection();
             connection.setRequestMethod("HEAD");
             connection.connect();
             responseCode = connection.getResponseCode();
-            new URL(url).openConnection();
 
             if(responseCode >= 400)
-                System.out.println(url + "is not valid");
+                System.out.println(url + " is not valid. Response Code: " + responseCode);
         }
         catch (Exception e){
-            System.out.println(e.getStackTrace());
+            System.out.println(e.getStackTrace() + "\t" +url);
         }
     }
 
