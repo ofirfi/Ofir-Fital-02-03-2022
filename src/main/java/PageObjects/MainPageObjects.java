@@ -48,6 +48,8 @@ public class MainPageObjects extends BaseObjects {
 
 
     //Popup Elements
+    public By popupTitle = By.xpath("//label[@class='onUnloadPopup__Label-v34ylr-11 doJHUJ']");
+
     @FindBy(xpath = "//span[@class='onUnloadPopup__CloseModalBtn-v34ylr-1 gFThxT']")
     public WebElement popupCloseBtn;
 

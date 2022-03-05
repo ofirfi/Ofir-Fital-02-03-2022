@@ -104,13 +104,14 @@ Tests Scenarios:
         a.  Open the main page.
         b.  Scroll down to the bottom of the page.
         c.  Wait 35 seconds for the popup to appear.
-        d.  Verify that "שדה שם הוא שדה חובה" error message is presented.
-        e.  Verify that "שדה אימייל הוא שדה חובה" error message is presented.
-        f.  Verify that "שדה טלפון הוא שדה חובה" error message is presented.
-        g.  Fill a valid name (Eg: Automation).
-        h.  Fill the email field with an invalid email (Eg: Automation@Test).
-        i   Fill the phone number field with letters (Eg: Ab12#).
-        j   Verify that "כתובת אימייל לא חוקית" error message is presented.
-        k   Verify that "מספר טלפון לא חוקי" error message is presented.
-        l   Click on the 'X' button to close the popup.
-        m.  Verify popup was closed.
+        d.  Click on 'לחצו לקבלת שיחה' button.
+        e.  Verify that "שדה שם הוא שדה חובה" error message is presented.
+        f.  Verify that "שדה אימייל הוא שדה חובה" error message is presented.
+        g.  Verify that "שדה טלפון הוא שדה חובה" error message is presented.
+        h.  Fill a valid name (Eg: Automation).
+        i.  Fill the email field with an invalid email (Eg: Automation@Test).
+        j.  Fill the phone number field with letters (Eg: Ab12#).
+        k.  Verify that "כתובת אימייל לא חוקית" error message is presented.
+        l.  Verify that "מספר טלפון לא חוקי" error message is presented.
+        m.  Click on the 'X' button to close the popup.
+        n.  Verify popup was closed.

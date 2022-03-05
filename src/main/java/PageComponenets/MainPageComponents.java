@@ -17,7 +17,8 @@ public class MainPageComponents extends BaseComponents {
     private String requiredFieldMsg = "שדה * הוא שדה חובה";
     private String illegalEmailMsg = "כתובת אימייל לא חוקית";
     private String illegalPhoneMsg = "מספר טלפון לא חוקי";
-    private String weAreHeroloText = "";
+    private String weAreHeroloText = "אנחנו הירולו";
+    private int popupLoadingTime = 30000;
     private List<String> outsidePageLinks = Arrays.asList("https://api.whatsapp.com/send?phone=972544945333",
             "https://www.linkedin.com/company/herolo/",
             "https://api.whatsapp.com/send?phone=972544945333",
@@ -160,16 +161,13 @@ public class MainPageComponents extends BaseComponents {
         selenium.verifyElementText(mainPageObjects.weAreHerolo,weAreHeroloText);
     }
 
-
-
-
     /**
      * The function gets the popup to load
      */
     public void getPopup(){
         selenium.scrollToElement(mainPageObjects.contactUsSendBtn);
         try{
-            Thread.sleep(35000);
+            Thread.sleep(popupLoadingTime);
         }
         catch(Exception e){}
     }
@@ -184,7 +182,11 @@ public class MainPageComponents extends BaseComponents {
         selenium.clickOnElement(mainPageObjects.popupSendBtn);
     }
 
-    public void verifyPopupClosure(){
+    public void closePopup(){
+        selenium.clickOnElement(mainPageObjects.popupCloseBtn);
+    }
 
+    public void verifyPopupClosure(){
+        Assert.isTrue(!selenium.isElementExists(mainPageObjects.popupTitle),"Error! - popup was not closed");
     }
 }

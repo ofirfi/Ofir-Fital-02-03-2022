@@ -49,7 +49,6 @@ public class Selenium {
         driver.close();
     }
 
-
     public void clickOnElement(WebElement element){
         try {
             element.click();
@@ -59,7 +58,6 @@ public class Selenium {
         }
     }
 
-
     /**
      * The function verifies element text value.
      * @param element The element to verify the text for.
@@ -68,7 +66,6 @@ public class Selenium {
     public void verifyElementText(WebElement element,String text){
         Assert.isTrue(getElementText(element).equals(text),"Error! - Element does not contains the text:" + text);
     }
-
 
     /**
      * The function verifies number of elements and texts.
@@ -84,11 +81,9 @@ public class Selenium {
         return element.getText();
     }
 
-
     public void elementSendText(WebElement element,String text){
         element.sendKeys(text);
     }
-
 
     /**
      * The function scrolls to a given element.
@@ -98,11 +93,9 @@ public class Selenium {
         actions.moveToElement(element).perform();
     }
 
-
     public List<WebElement> findElementsByXpath(By by){
             return driver.findElements(by);
     }
-
 
     /**
      * The function gets the page Y axis offset.
@@ -125,7 +118,6 @@ public class Selenium {
     public void verifyElementLink(WebElement element,String link){
         Assert.isTrue(element.getAttribute("href").equals(link),String.format("Error! - Got %s. Expected to get: %s",element.getAttribute("href"),link));
     }
-
 
     public String getLinkUrl(WebElement element){
         return element.getAttribute("href");
@@ -155,5 +147,9 @@ public class Selenium {
 
     public void verifyPageURL(String expectedURL){
         Assert.isTrue(driver.getCurrentUrl().equals(expectedURL),String.format("Error! - got to %S. Expected URL: %s",driver.getCurrentUrl(),expectedURL));
+    }
+
+    public boolean isElementExists(By byElement){
+        return !driver.findElements(byElement).isEmpty();
     }
 }

@@ -27,7 +27,7 @@ public class MainPageTests extends BaseTests{
     }
 
     /**
-     * The function tests "How To Help" form fields validation error messages.
+     * "How To Help" form validation tests.
      */
     @Test
     public void b_HelpFormValidationTest(){
@@ -51,7 +51,7 @@ public class MainPageTests extends BaseTests{
     }
 
     /**
-     * The function tests "Contact Us" form fields validation error messages.
+     * "Contact Us" validation tests.
      */
     @Test
     public void d_ContactUsValidationTest(){
@@ -82,5 +82,21 @@ public class MainPageTests extends BaseTests{
         mainPageComponents.fillPopupForm("Automation","Automation@Test.com","0501234567");
         mainPageComponents.sendPopup();
         thankYouPageComponents.verifyPage();
+    }
+
+    /**
+     * Popup validation test.
+     */
+    @Test
+    public void g_PopupValidationTest(){
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
+        mainPageComponents.getPopup();
+        mainPageComponents.fillPopupForm("","","");
+        mainPageComponents.sendPopup();
+        mainPageComponents.MissingRequiredFieldsErrorsCheck(MainPageComponents.FormType.POPUP_FORM);
+        mainPageComponents.fillPopupForm("Automation","Automation@Test","Ab12#");
+        mainPageComponents.invalidFieldsErrorCheck(MainPageComponents.FormType.POPUP_FORM);
+        mainPageComponents.closePopup();
+        mainPageComponents.verifyPopupClosure();
     }
 }
