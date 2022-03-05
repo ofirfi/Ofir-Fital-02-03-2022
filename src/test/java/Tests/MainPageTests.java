@@ -99,4 +99,15 @@ public class MainPageTests extends BaseTests{
         mainPageComponents.closePopup();
         mainPageComponents.verifyPopupClosure();
     }
+
+    /**
+     * Work examples arrows functionality test.
+     */
+    @Test
+    public void h_WorksForExampleTests(){
+        mainPageComponents.goToPage(mainPageComponents.getPageURL());
+        mainPageComponents.getToWorkExamples();
+        mainPageComponents.rightArrowFunctionalityTest();
+        mainPageComponents.leftArrowFunctionalityTest();
+    }
 }

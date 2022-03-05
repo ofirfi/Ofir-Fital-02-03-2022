@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import Base.BaseObjects;
 
+import java.util.List;
+
 
 public class MainPageObjects extends BaseObjects {
 
@@ -78,7 +80,8 @@ public class MainPageObjects extends BaseObjects {
     @FindBy(xpath = "//img[@alt='Left arrow']")
     public WebElement workExampleLeftArrow;
 
-
+    @FindBy(xpath ="(//ul[@class='slick-dots'])[1]/li")
+    public List<WebElement> workExampleCheckboxs;
 
 
 }

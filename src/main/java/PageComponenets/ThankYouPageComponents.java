@@ -27,7 +27,6 @@ public class ThankYouPageComponents extends BaseComponents {
         return thankYouPageComponents;
     }
 
-
     public String getPageUrl(){
         return pageUrl;
     }
@@ -35,7 +34,6 @@ public class ThankYouPageComponents extends BaseComponents {
     public void verifyPage(){
         selenium.verifyElementText(thankYouPageObjects.thankYouMsg,thankYouMsg);
     }
-
 
     /**
      * The function verifies the integrity of the link buttons.

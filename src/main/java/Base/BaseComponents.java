@@ -9,12 +9,17 @@ import java.util.List;
 public class BaseComponents {
     protected Selenium selenium = Selenium.getSelenium();
 
+    protected void sleep(int seconds){
+        try{
+            Thread.sleep(seconds*1000);
+        }
+        catch(Exception e){}
+    }
 
     public void goToPage(String url){
         selenium.goToURL(url);
         selenium.verifyPageURL(url);
     }
-
 
     /**
      * The function verifies the integrity of link elements.

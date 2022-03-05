@@ -102,10 +102,10 @@ public class Selenium {
      * @return The Y axis offset of the current page state.
      */
     public Long getPageYOffset(){
-        try{
-            Thread.sleep(1000);
-        }
-        catch(Exception e){}
+//        try{
+//            Thread.sleep(1000);
+//        }
+//        catch(Exception e){}
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         return ((Number)executor.executeScript("return window.pageYOffset;")).longValue();
     }
@@ -151,5 +151,10 @@ public class Selenium {
 
     public boolean isElementExists(By byElement){
         return !driver.findElements(byElement).isEmpty();
+    }
+
+
+    public String elementGetClass(WebElement element){
+        return element.getAttribute("class");
     }
 }

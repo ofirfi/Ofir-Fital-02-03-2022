@@ -18,7 +18,8 @@ public class MainPageComponents extends BaseComponents {
     private String illegalEmailMsg = "כתובת אימייל לא חוקית";
     private String illegalPhoneMsg = "מספר טלפון לא חוקי";
     private String weAreHeroloText = "אנחנו הירולו";
-    private int popupLoadingTime = 30000;
+    private String activeDot = "slick-active";
+    private int popupLoadingTime = 30;
     private List<String> outsidePageLinks = Arrays.asList("https://api.whatsapp.com/send?phone=972544945333",
             "https://www.linkedin.com/company/herolo/",
             "https://api.whatsapp.com/send?phone=972544945333",
@@ -154,6 +155,7 @@ public class MainPageComponents extends BaseComponents {
 
         //Verify "Back To Top" button.
         selenium.clickOnElement(mainPageObjects.scrollUpBtn);
+        sleep(1);
         Assert.isTrue(selenium.getPageYOffset() == 0,"Fail! - Scroll to top button is not working");
     }
 
@@ -166,10 +168,7 @@ public class MainPageComponents extends BaseComponents {
      */
     public void getPopup(){
         selenium.scrollToElement(mainPageObjects.contactUsSendBtn);
-        try{
-            Thread.sleep(popupLoadingTime);
-        }
-        catch(Exception e){}
+        sleep(popupLoadingTime);
     }
 
     public void fillPopupForm(String name, String email, String phone){
@@ -188,5 +187,48 @@ public class MainPageComponents extends BaseComponents {
 
     public void verifyPopupClosure(){
         Assert.isTrue(!selenium.isElementExists(mainPageObjects.popupTitle),"Error! - popup was not closed");
+    }
+
+    public void getToWorkExamples(){
+        selenium.scrollToElement(mainPageObjects.workExampleCheckboxs.get(0));
+    }
+
+    /**
+     * The function tests if the right arrow works.
+     */
+    public void rightArrowFunctionalityTest(){
+        List<WebElement> dotElements = mainPageObjects.workExampleCheckboxs;
+        Assert.isTrue(selenium.elementGetClass(dotElements.get(0)).equals(activeDot),"Error! - The left work examples checkbox is not marked.");
+        for(int i=0; i<dotElements.size()-1; i++)
+            getNextWorkExamples(mainPageObjects.workExampleRightArrow,dotElements.get(i+1),dotElements.get(i));
+        getNextWorkExamples(mainPageObjects.workExampleRightArrow,dotElements.get(0),dotElements.get(dotElements.size()-1));
+    }
+
+    /**
+     * The function tests if the left arrow works.
+     */
+    public void leftArrowFunctionalityTest(){
+        List<WebElement> dotElements = mainPageObjects.workExampleCheckboxs;
+        Assert.isTrue(selenium.elementGetClass(dotElements.get(0)).equals(activeDot),"Error! - The left work examples checkbox is not marked.");
+        for(int i=dotElements.size()-1; i>0; i--)
+            getNextWorkExamples(mainPageObjects.workExampleLeftArrow,dotElements.get(i),dotElements.get((i+1)%5));
+        getNextWorkExamples(mainPageObjects.workExampleLeftArrow,dotElements.get(0),dotElements.get(1));
+    }
+
+    /**
+     * The function gets to the next work examples by clicking the right arrow and verifies it.
+     * @param arrow The arrow to click on (Left or Right).
+     * @param markedElement - The expected marked element.
+     * @param unMarkedElement - The element that was marked before.
+     */
+    private void getNextWorkExamples(WebElement arrow, WebElement markedElement, WebElement unMarkedElement){
+        clickOnArrow(arrow);
+        Assert.isTrue(selenium.elementGetClass(markedElement).equals(activeDot),"Error! - the next marked checkbox is not marked.");
+        Assert.isTrue(selenium.elementGetClass(unMarkedElement).equals(""),"Error! - the previous checkbox is still marked.");
+    }
+
+    private void clickOnArrow(WebElement arrow){
+        selenium.clickOnElement(arrow);
+        sleep(1);
     }
 }

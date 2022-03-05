@@ -115,3 +115,15 @@ Tests Scenarios:
         l.  Verify that "מספר טלפון לא חוקי" error message is presented.
         m.  Click on the 'X' button to close the popup.
         n.  Verify popup was closed.
+
+
+    9.  Work examples arrows functionality test.
+        a.  Open the main page.
+        b.  Scroll down to the example works.
+        c.  Verify that the left checkbox is marked.
+        d.  Click on the right arrow and verify that the marked checkbox was moved to the right.  
+        e.  Repeat step c 3 more times.
+        f.  Click on the right arrow and verify that the left checkbox is marked.
+        g.  Click on the left arrow and verify that the right checkbox is marked.
+        h.  Click on the left arrow and verify that the marked checkbox was moved to the left.
+        i.  Repeat step g 3 more times.
